@@ -50,7 +50,6 @@ for (int i = 0; i < names.Length; i++)
     {
         while (!raceOver)
         {
-            barrier.SignalAndWait();
             if (raceOver) break;
 
             if (rnd.Next(ODDS) == 0)
@@ -74,7 +73,6 @@ timer.Elapsed += (_, _) =>
 {
     if (raceOver) { timer.Stop(); return; }
 
-    barrier.SignalAndWait();
     barrier.SignalAndWait();
 
     app.Invoke(() =>
